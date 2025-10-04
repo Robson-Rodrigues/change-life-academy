@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Change Life Academy{% endblock %}
+
+{% block content %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark gym-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-dumbbell"></i> Change Life Academy
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle"></i> {{ user.name }}
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{{ url_for('logout') }}">
+                            <i class="bi bi-box-arrow-right"></i> Sair
+                        </a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Dashboard Content -->
+<div class="container-fluid py-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2">
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <h5><i class="bi bi-speedometer2"></i> Dashboard</h5>
+                </div>
+                <ul class="sidebar-menu">
+                    <li class="active">
+                        <a href="#overview">
+                            <i class="bi bi-house"></i> Visão Geral
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#employees">
+                            <i class="bi bi-people"></i> Funcionários
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#departments">
+                            <i class="bi bi-building"></i> Departamentos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#hr">
+                            <i class="bi bi-person-badge"></i> Recursos Humanos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#benefits">
+                            <i class="bi bi-gift"></i> Benefícios
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#reports">
+                            <i class="bi bi-graph-up"></i> Relatórios
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10">
+            <div class="dashboard-content">
+                <!-- Welcome Section -->
+                <div class="welcome-section">
+                    <h2>Bem-vindo, {{ user.name }}!</h2>
+                    <p class="text-muted">Portal de Integração Corporativa - Change Life Academy</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="row mb-4">
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>45</h3>
+                                <p>Funcionários Ativos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-building"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>6</h3>
+                                <p>Departamentos</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-calendar-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>12</h3>
+                                <p>Novos Contratados</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                            <div class="stat-content">
+                                <h3>98%</h3>
+                                <p>Satisfação</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="card gym-card">
+                            <div class="card-header">
+                                <h5><i class="bi bi-clock-history"></i> Atividade Corporativa Recente</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="bi bi-person-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Novo funcionário contratado</h6>
+                                        <p class="text-muted">João Santos ingressou no departamento de RH</p>
+                                        <small class="text-muted">Há 2 horas</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="bi bi-calendar-check"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Reunião de equipe concluída</h6>
+                                        <p class="text-muted">Reunião mensal do departamento de Marketing</p>
+                                        <small class="text-muted">Há 3 horas</small>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon">
+                                        <i class="bi bi-award"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <h6>Funcionário do mês</h6>
+                                        <p class="text-muted">Ana Costa recebeu reconhecimento por excelência</p>
+                                        <small class="text-muted">Há 1 dia</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card gym-card">
+                            <div class="card-header">
+                                <h5><i class="bi bi-calendar3"></i> Próximos Eventos Corporativos</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="upcoming-class">
+                                    <div class="class-time">14:00</div>
+                                    <div class="class-info">
+                                        <h6>Treinamento de Segurança</h6>
+                                        <p class="text-muted">Sala de Conferências</p>
+                                    </div>
+                                </div>
+                                <div class="upcoming-class">
+                                    <div class="class-time">16:00</div>
+                                    <div class="class-info">
+                                        <h6>Reunião de Planejamento</h6>
+                                        <p class="text-muted">Departamento de Operações</p>
+                                    </div>
+                                </div>
+                                <div class="upcoming-class">
+                                    <div class="class-time">18:00</div>
+                                    <div class="class-info">
+                                        <h6>Happy Hour da Empresa</h6>
+                                        <p class="text-muted">Área de Convivência</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Boas-vindas -->
+<div class="modal fade" id="welcomeModal" tabindex="-1" aria-labelledby="welcomeModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content gym-modal">
+            <div class="modal-header gym-modal-header">
+                <h5 class="modal-title" id="welcomeModalLabel">
+                    <i class="bi bi-hand-thumbs-up"></i> Bem-vindo à Change Life Academy!
+                </h5>
+            </div>
+            <div class="modal-body gym-modal-body">
+                <div class="text-center mb-4">
+                    <i class="bi bi-people-fill welcome-icon"></i>
+                </div>
+                <h4 class="text-center mb-3">Olá, {{ user.name }}!</h4>
+                <p class="text-center mb-4">Seja bem-vindo(a) à nossa equipe! Estamos muito felizes em tê-lo(a) conosco.</p>
+                <p class="text-center mb-4">Para te ajudar a conhecer melhor nossa empresa, criamos um assistente virtual que pode responder suas dúvidas sobre:</p>
+                
+            
+            </div>
+            <div class="modal-footer gym-modal-footer">
+                <button type="button" class="btn gym-btn-modal" onclick="window.location.href='{{ url_for('chatbot') }}'">
+                    <i class="bi bi-robot"></i> Conhecer a Empresa
+                </button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    <i class="bi bi-skip-forward"></i> Pular por agora
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+    modal.show();
+});
+</script>
+{% endblock %}

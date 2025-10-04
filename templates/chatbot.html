@@ -1,0 +1,369 @@
+{% extends "base.html" %}
+
+{% block title %}Assistente Virtual - Change Life Academy{% endblock %}
+
+{% block content %}
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark gym-navbar">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('dashboard') }}">
+            <i class="bi bi-arrow-left"></i> Voltar ao Ínicio
+        </a>
+        <div class="navbar-nav ms-auto">
+            <span class="navbar-text">
+                <i class="bi bi-person-circle"></i> {{ user.name }}
+            </span>
+        </div>
+    </div>
+</nav>
+
+<!-- Chatbot Content -->
+<div class="container-fluid py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="chatbot-container">
+                <!-- Header -->
+                <div class="chatbot-header">
+                    <div class="chatbot-avatar">
+                        <i class="bi bi-emoji-smile"></i>
+                    </div>
+                    <div class="chatbot-info">
+                        <h4>Happy</h4>
+                        <p>Assistente Virtual da Change Life Academy</p>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chatbot-messages" id="chatbotMessages">
+                    <div class="message bot-message">
+                        <div class="message-content">
+                            <i class="bi bi-emoji-smile"></i>
+                            <div class="message-text">
+                                <p>Olá, {{ user.name }}! 👋</p>
+                                <p>Meu nome é <strong>Happy</strong> e sou a assistente virtual da Change Life Academy! 😊</p>
+                                <p>Estou aqui para te ajudar a conhecer nossa empresa e responder todas as suas dúvidas sobre nossa cultura, estrutura e benefícios.</p>
+                                <p>Fico muito feliz em te receber em nossa equipe! 🎉</p>
+                                <p>Escolha uma das opções abaixo para começarmos nossa conversa:</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Typing Indicator -->
+                <div class="typing-indicator" id="typingIndicator" style="display: none;">
+                    <div class="message-content">
+                        
+                        <div class="typing-dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Options -->
+                <div class="chatbot-options">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('quem-somos')">
+                                <span>Quem Somos</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('missao-visao-valores')">
+                                <span>Missão, Visão e Valores</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('departamentos')">
+                                <span>Departamentos</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('beneficios')">
+                                <span>Benefícios</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('estrutura-hierarquica')">
+                                <span>Estrutura Hierárquica</span>
+                            </button>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('feedbacks')">
+                                <span>Feedbacks</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back to Dashboard -->
+                <div class="text-center mt-4">
+                    <a href="{{ url_for('dashboard') }}" class="btn gym-btn">
+                        <i class="bi bi-house"></i> Voltar ao Ínicio
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+function showInfo(topic) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    const typingIndicator = document.getElementById('typingIndicator');
+    
+    // Remove active class from all options
+    document.querySelectorAll('.chatbot-option').forEach(btn => {
+        btn.classList.remove('active');
+    });
+    
+    // Add active class to clicked option
+    event.target.closest('.chatbot-option').classList.add('active');
+    
+    // Clear previous messages and show typing indicator
+    messagesContainer.innerHTML = '';
+    typingIndicator.style.display = 'block';
+    
+    // Scroll to bottom
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    
+    // Simulate typing delay
+    setTimeout(() => {
+        typingIndicator.style.display = 'none';
+        typeMessage(topic);
+    }, 800);
+}
+
+function typeMessage(topic) {
+    const messagesContainer = document.getElementById('chatbotMessages');
+    let content = '';
+    
+    switch(topic) {
+        case 'quem-somos':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        <i class="bi bi-emoji-smile"></i>
+                        <div class="message-text">
+                            <h5><i class="bi bi-building"></i> Quem Somos</h5>
+                            <p>Que legal que você quer nos conhecer melhor! 😊</p>
+                            <p>A <strong>Change Life Academy</strong> é uma empresa líder no setor de fitness e bem-estar, fundada em 2010 com a missão de transformar vidas através da atividade física.</p>
+                            <p>Com mais de 10 anos de experiência, oferecemos serviços de alta qualidade em:</p>
+                            <ul>
+                                <li>Musculação e condicionamento físico 💪</li>
+                                <li>Aulas de grupo (Yoga, Pilates, Crossfit) 🧘‍♀️</li>
+                                <li>Personal training 🏃‍♂️</li>
+                                <li>Nutrição esportiva 🥗</li>
+                                <li>Fisioterapia 🏥</li>
+                            </ul>
+                            <p>Nossa equipe é formada por profissionais altamente qualificados e apaixonados pelo que fazem. Eles são o coração da nossa empresa! ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'missao-visao-valores':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-eye"></i> Missão, Visão e Valores</h5>
+                            <p>Essa é uma das minhas partes favoritas para compartilhar! ✨</p>
+                            
+                            <p><strong>🎯 Missão</strong><br>
+                            Transformar a vida das pessoas por meio da atividade física e atendimento humanizado, com ênfaze na performance, qualidade de vida, promovendo bem-estar e saúde emocional 💪</p>
+                            
+                            <p><strong>👁️ Visão</strong><br>
+                            Ser reconhecida nacionalmente como a melhor academia em promoção a saúde mental, acolhimento social e uso de tecnologia de ponta, tornando-se referencia e alcançando o maior indice de alunos fidelizados com meta em expansão nos próximos 5 anos em diversas cidades 🌟</p>
+                            
+                            <p><strong>❤️ Valores</strong><br>
+                            Muito mais que uma academia de verão: um estilo de vida! colocamos nossos alunos no centro, prezando por um atendimento humano e empático. Promovemos mudanças e melhorias para todos que buscam uma vida saudável e equilibrada, buscando sempre as melhores tecnologias para proporcionar experiencias únicas</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'departamentos':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-diagram-3"></i> Departamentos</h5>
+                            <p>Nossa empresa é como uma grande família, e cada departamento tem seu papel especial! 👨‍👩‍👧‍👦</p>
+                            <div class="department-card">
+                                <h6><i class="bi bi-people"></i> Recursos Humanos</h6>
+                                <p>Nossa equipe de RH cuida de todos nós com muito carinho! Eles são responsáveis pela gestão de pessoas, recrutamento, treinamentos e desenvolvimento profissional. 💼</p>
+                            </div>
+                            <div class="department-card">
+                                <h6><i class="bi bi-cash-coin"></i> Financeiro</h6>
+                                <p>Eles mantêm tudo organizado financeiramente! Gestão financeira, controle de custos, faturamento e planejamento orçamentário. 💰</p>
+                            </div>
+                            <div class="department-card">
+                                <h6><i class="bi bi-person-badge"></i> Operações</h6>
+                                <p>O coração da nossa academia! Coordenação das atividades diárias, gestão de instrutores e supervisão das aulas. 🏃‍♀️</p>
+                            </div>
+                            <div class="department-card">
+                                <h6><i class="bi bi-megaphone"></i> Marketing</h6>
+                                <p>Nossa equipe criativa! Comunicação, divulgação, eventos e relacionamento com clientes. Eles fazem a nossa voz ser ouvida! 📢</p>
+                            </div>
+                            <div class="department-card">
+                                <h6><i class="bi bi-gear"></i> Manutenção</h6>
+                                <p>Nossos heróis da limpeza! Manutenção de equipamentos, limpeza e conservação das instalações. Tudo sempre impecável! 🧹</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'beneficios':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-gift"></i> Benefícios</h5>
+                            <p>Uau! Essa é uma das partes que mais me deixa feliz em compartilhar! 🎁</p>
+                            <p>Cuidamos muito bem da nossa equipe, e por isso oferecemos benefícios incríveis:</p>
+                            <div class="benefits-grid">
+                                <div class="benefit-item">
+                                    <i class="bi bi-heart-pulse"></i>
+                                    <h6>Plano de Saúde</h6>
+                                    <p>Cobertura completa para você e sua família ❤️</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-dumbbell"></i>
+                                    <h6>Academia Gratuita</h6>
+                                    <p>Acesso ilimitado a todos os equipamentos e aulas 💪</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-calendar-check"></i>
+                                    <h6>Férias</h6>
+                                    <p>30 dias de férias remuneradas por ano 🏖️</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-graduation-cap"></i>
+                                    <h6>Desenvolvimento</h6>
+                                    <p>Cursos e certificações pagas pela empresa 🎓</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-cup-hot"></i>
+                                    <h6>Vale Refeição</h6>
+                                    <p>R$ 500,00 mensais para alimentação 🍽️</p>
+                                </div>
+                                <div class="benefit-item">
+                                    <i class="bi bi-car-front"></i>
+                                    <h6>Vale Transporte</h6>
+                                    <p>100% do transporte público 🚌</p>
+                                </div>
+                            </div>
+                            <p>E tem muito mais! Acreditamos que colaboradores felizes fazem clientes felizes! 😊</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+            
+        case 'estrutura-hierarquica':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-diagram-2"></i> Estrutura Hierárquica</h5>
+                            <p>Nossa estrutura é bem organizada, mas sempre com muito respeito e carinho entre todos! 🤗</p>
+                            <div class="hierarchy-tree">
+                                <div class="hierarchy-level ceo">
+                                    <i class="bi bi-crown"></i>
+                                    <span>Diretoria 👑</span>
+                                </div>
+                                <div class="hierarchy-level management">
+                                    <i class="bi bi-person-badge"></i>
+                                    <span>Gerentes de Departamento 👨‍💼</span>
+                                </div>
+                                <div class="hierarchy-level supervisors">
+                                    <i class="bi bi-people"></i>
+                                    <span>Supervisores 👥</span>
+                                </div>
+                                <div class="hierarchy-level coordinators">
+                                    <i class="bi bi-person-check"></i>
+                                    <span>Coordenadores 👨‍💻</span>
+                                </div>
+                                <div class="hierarchy-level staff">
+                                    <i class="bi bi-person"></i>
+                                    <span>Colaboradores 👨‍💼</span>
+                                </div>
+                            </div>
+                            <div class="hierarchy-info">
+                                <h6>Princípios da Nossa Estrutura:</h6>
+                                <p>O que mais me orgulha é como nossa empresa funciona:</p>
+                                <ul>
+                                    <li><strong>Horizontalidade:</strong> Comunicação direta entre todos os níveis - todos podem falar com todos! 💬</li>
+                                    <li><strong>Transparência:</strong> Decisões compartilhadas e abertas - nada de segredos! 🔍</li>
+                                    <li><strong>Desenvolvimento:</strong> Oportunidades de crescimento para todos - crescemos juntos! 🌱</li>
+                                    <li><strong>Mentoria:</strong> Líderes como mentores de suas equipes - aprendemos uns com os outros! 🎓</li>
+                                </ul>
+                                <p>É uma estrutura que funciona com muito amor e respeito! ❤️</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+    }
+    
+    // Create message container
+    const messageDiv = document.createElement('div');
+    messageDiv.className = 'message bot-message';
+    messageDiv.innerHTML = content;
+    messagesContainer.appendChild(messageDiv);
+    
+    // Type the content with effect
+    typeWriter(messageDiv.querySelector('.message-text'), content);
+}
+
+function typeWriter(element, fullContent) {
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = fullContent;
+    const fullText = tempDiv.textContent || tempDiv.innerText || '';
+    
+    element.innerHTML = '';
+    element.classList.add('typing');
+    
+    let i = 0;
+    let currentText = '';
+    
+    function typeChar() {
+        if (i < fullText.length) {
+            currentText += fullText.charAt(i);
+            element.innerHTML = currentText;
+            i++;
+            
+            // Variable typing speed for more natural feel
+            const delay = Math.random() * 20 + 10; // 10-30ms
+            setTimeout(typeChar, delay);
+        } else {
+            // After typing is complete, show the formatted content
+            element.classList.remove('typing');
+            element.innerHTML = tempDiv.innerHTML;
+            
+            // Scroll to bottom after content is fully loaded
+            setTimeout(() => {
+                const messagesContainer = document.getElementById('chatbotMessages');
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 100);
+        }
+    }
+    
+    // Start typing after a small delay
+    setTimeout(typeChar, 100);
+}
+</script>
+{% endblock %}
