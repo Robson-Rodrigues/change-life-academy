@@ -153,11 +153,10 @@ function typeMessage(topic) {
                     <div class="message-content">
                         <div class="message-text">
                             <h5><i class="bi bi-building"></i> Quem Somos</h5>
-                            <p><em>Nada melhor do que ouvir direto de quem ajudou a criar tudo! O Vitor, um dos nossos fundadores, explica rapidinho quem somos.</em></p>
-                            <div class="ratio ratio-16x9 mb-3 video-holder position-relative">
-                                <div class="video-spinner d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background:#000;border-radius:0.5rem;">
-                                    <div class="spinner-border text-light" role="status" aria-label="Carregando vídeo" style="width:2.25rem;height:2.25rem;"></div>
-                                </div>
+                            <div class="typed-text mb-3">
+                                <p><em>Nada melhor do que ouvir direto de quem ajudou a criar tudo! O Vitor, um dos nossos fundadores, explica rapidinho quem somos.</em></p>
+                            </div>
+                            <div class="ratio ratio-16x9">
                                 <video controls preload="metadata" poster="{{ url_for('static', filename='image/logo.png') }}">
                                     <source src="{{ url_for('static', filename='video/quem_somos.mp4') }}" type="video/mp4">
                                 </video>
@@ -175,7 +174,9 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-eye"></i> Missão, Visão e Valores</h5>
-                            <p>Essa é uma das minhas partes favoritas para compartilhar! ✨</p>
+                            <div class="typed-text mb-3">
+                                <p>Essa é uma das minhas partes favoritas para compartilhar! ✨</p>
+                            </div>
                             
                             <p><strong>🎯 Missão</strong><br>
                             Transformar a vida das pessoas por meio da atividade física e atendimento humanizado, com ênfaze na performance, qualidade de vida, promovendo bem-estar e saúde emocional 💪</p>
@@ -198,7 +199,9 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-diagram-3"></i> Departamentos</h5>
-                            <p>Quer entender melhor como cada parte da empresa trabalha em conjunto? Dá uma olhada na estrutura dos nossos departamentos.</p>
+                            <div class="typed-text mb-3">
+                                <p>Quer entender melhor como cada parte da empresa trabalha em conjunto? Dá uma olhada na estrutura dos nossos departamentos.</p>
+                            </div>
                             <div class="row g-3">
                                 <div class="col-12 col-md-6">
                                     <div class="p-3 bg-white rounded h-100 shadow-sm" style="border-left: 4px solid #F59E0B;"> <!-- amber -->
@@ -256,7 +259,9 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-gift"></i> Benefícios</h5>
-                            <p>Confira os benefícios oferecidos aos nossos colaboradores:</p>
+                            <div class="typed-text mb-3">
+                                <p>Confira os benefícios oferecidos aos nossos colaboradores:</p>
+                            </div>
                             <ul>
                                 <li>Acesso gratuito à academia ou desconto especial em planos</li>
                                 <li>Programas de saúde e bem-estar (check-ups, acompanhamento nutricional, aulas exclusivas)</li>
@@ -284,7 +289,9 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-diagram-2"></i> Estrutura Hierárquica</h5>
-                            <p>Pra visualizar melhor como trabalhamos juntos, aqui está uma visão da estrutura das nossas áreas.</p>
+                            <div class="typed-text mb-3">
+                                <p>Pra visualizar melhor como trabalhamos juntos, aqui está uma visão da estrutura das nossas áreas.</p>
+                            </div>
                             <div class="text-center mt-3">
                                 <img src="{{ url_for('static', filename='image/orgonograma.jpg') }}" alt="Organograma - Estrutura das Áreas" class="img-fluid rounded shadow-sm">
                                 </div>
@@ -301,16 +308,137 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-chat-dots"></i> Feedbacks</h5>
-                            <p>🎥 Confira o feedback de alguns de nossos colaboradores.<br>
-                            Eles compartilham como tem sido fazer parte dessa jornada de crescimento, propósito e transformação.<br>
-                            ✨ Inspire-se com essas histórias e veja o impacto de viver a cultura Change Life Academy de perto.</p>
-                            <div class="ratio ratio-16x9 mt-3 video-holder position-relative">
-                                <div class="video-spinner d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background:#000;border-radius:0.5rem;">
-                                    <div class="spinner-border text-light" role="status" aria-label="Carregando vídeo" style="width:2.25rem;height:2.25rem;"></div>
-                                </div>
+                            <div class="typed-text mb-3">
+                                <p>🎥 Confira o feedback de alguns de nossos colaboradores.</p>
+                                <p>Eles compartilham como tem sido fazer parte dessa jornada de crescimento, propósito e transformação.</p>
+                                <p>✨ Inspire-se com essas histórias e veja o impacto de viver a cultura Change Life Academy de perto.</p>
+                            </div>
+                            <div class="ratio ratio-16x9">
                                 <video controls preload="metadata" poster="{{ url_for('static', filename='image/logo.png') }}">
                                     <source src="{{ url_for('static', filename='video/Feedbacks.mp4') }}" type="video/mp4">
                                 </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            break;
+
+        case 'Duvidas Frequentes':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-question-circle"></i> Dúvidas Frequentes</h5>
+                            <div class="typed-text mb-3">
+                                <p>❓Confira abaixo as dúvidas frequentes! <br>Separei as perguntas mais comuns para te ajudar a entender melhor como as coisas funcionam por aqui.</p>
+                            </div>
+                            <div class="accordion" id="faqAccordion">
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne">
+                                            Como é feita a avaliação de desempenho?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>Temos um programa de avaliação de desempenho anual. Através da avaliação 360°, todos contribuem para o desenvolvimento dos nossos colaboradores.</p>
+                                            <p>A avaliação é dividida em 3 etapas:</p>
+                                            <ul>
+                                                <li>👤 Avaliação do Líder – 75%</li>
+                                                <li>🤝 Avaliação dos Pares – 15%</li>
+                                                <li>🪞 Autoavaliação – 10%</li>
+                                            </ul>
+                                            <p>Após essas etapas, o colaborador é submetido ao fórum de validação, onde os resultados são analisados e discutidos com a liderança.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo">
+                                            A empresa realiza eventos, confraternizações?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>Sim! Valorizamos o bem-estar e o engajamento da equipe. Realizamos eventos internos, datas comemorativas, confraternizações de fim de ano e outras iniciativas para promover a integração entre os colaboradores.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree">
+                                            Como são as políticas de férias, faltas e pontualidade?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p><strong>Férias:</strong> Seguem a legislação trabalhista, com direito a 30 dias após 12 meses de trabalho.</p>
+                                            <p><strong>Faltas:</strong> Devem ser justificadas com antecedência sempre que possível. Faltas não justificadas podem impactar na avaliação de desempenho.</p>
+                                            <p><strong>Pontualidade:</strong> A pontualidade é fundamental para o bom andamento das atividades. Atrasos frequentes também podem influenciar em avaliações internas.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour">
+                                            Quais sistemas ou plataformas vou usar no dia a dia?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>Os sistemas variam de acordo com a área de atuação, mas alguns dos mais utilizados são:</p>
+                                            <ul>
+                                                <li>Plataformas de comunicação interna (como Microsoft Teams ou Slack)</li>
+                                                <li>Ferramentas de produtividade (como Google Workspace, Microsoft Office, etc.)</li>
+                                                <li>Sistemas específicos da área (serão apresentados no seu onboarding)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingFive">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive">
+                                            Há oportunidades de crescimento e promoções internas?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseFive" class="accordion-collapse collapse" aria-labelledby="faqHeadingFive" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>Sim! Incentivamos o desenvolvimento interno e priorizamos a promoção de talentos da casa. O desempenho, comprometimento e habilidades demonstradas são levados em conta em processos de crescimento profissional.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingSix">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseSix" aria-expanded="false" aria-controls="faqCollapseSix">
+                                            Como é feita a avaliação de desempenho? (visão geral)
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseSix" class="accordion-collapse collapse" aria-labelledby="faqHeadingSix" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>As avaliações são realizadas periodicamente e envolvem análise de metas, competências, comportamento e alinhamento com os valores da empresa. Em alguns casos, utilizamos feedbacks 360º e reuniões com a liderança.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="faqHeadingSeven">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseSeven" aria-expanded="false" aria-controls="faqCollapseSeven">
+                                            Existem treinamentos ou cursos oferecidos pela empresa?
+                                        </button>
+                                    </h2>
+                                    <div id="faqCollapseSeven" class="accordion-collapse collapse" aria-labelledby="faqHeadingSeven" data-bs-parent="#faqAccordion">
+                                        <div class="accordion-body">
+                                            <p>Sim! Oferecemos treinamentos internos e externos, além de parcerias com plataformas de ensino. O objetivo é capacitar os colaboradores e prepará-los para novos desafios e oportunidades dentro da empresa.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -326,7 +454,8 @@ function typeMessage(topic) {
     messagesContainer.appendChild(messageDiv);
     
     // Type the content with effect
-    typeWriter(messageDiv.querySelector('.message-text'), content);
+    const typedTarget = messageDiv.querySelector('.typed-text') || messageDiv.querySelector('.message-text');
+    typeWriter(typedTarget, typedTarget.innerHTML || content);
 
     // Ativa spinner até o vídeo estar pronto (quem-somos / feedbacks)
     const holders = messageDiv.querySelectorAll('.video-holder');
