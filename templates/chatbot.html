@@ -94,6 +94,11 @@
                                 <span>Feedbacks</span>
                             </button>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <button class="btn chatbot-option" onclick="showInfo('Duvidas Frequentes')">
+                                <span>Duvidas Frequentes</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -146,20 +151,17 @@ function typeMessage(topic) {
             content = `
                 <div class="message bot-message">
                     <div class="message-content">
-                        <i class="bi bi-emoji-smile"></i>
                         <div class="message-text">
                             <h5><i class="bi bi-building"></i> Quem Somos</h5>
-                            <p>Que legal que você quer nos conhecer melhor! 😊</p>
-                            <p>A <strong>Change Life Academy</strong> é uma empresa líder no setor de fitness e bem-estar, fundada em 2010 com a missão de transformar vidas através da atividade física.</p>
-                            <p>Com mais de 10 anos de experiência, oferecemos serviços de alta qualidade em:</p>
-                            <ul>
-                                <li>Musculação e condicionamento físico 💪</li>
-                                <li>Aulas de grupo (Yoga, Pilates, Crossfit) 🧘‍♀️</li>
-                                <li>Personal training 🏃‍♂️</li>
-                                <li>Nutrição esportiva 🥗</li>
-                                <li>Fisioterapia 🏥</li>
-                            </ul>
-                            <p>Nossa equipe é formada por profissionais altamente qualificados e apaixonados pelo que fazem. Eles são o coração da nossa empresa! ❤️</p>
+                            <p><em>Nada melhor do que ouvir direto de quem ajudou a criar tudo! O Vitor, um dos nossos fundadores, explica rapidinho quem somos.</em></p>
+                            <div class="ratio ratio-16x9 mb-3 video-holder position-relative">
+                                <div class="video-spinner d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background:#000;border-radius:0.5rem;">
+                                    <div class="spinner-border text-light" role="status" aria-label="Carregando vídeo" style="width:2.25rem;height:2.25rem;"></div>
+                                </div>
+                                <video controls preload="metadata" poster="{{ url_for('static', filename='image/logo.png') }}">
+                                    <source src="{{ url_for('static', filename='video/quem_somos.mp4') }}" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -196,26 +198,50 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-diagram-3"></i> Departamentos</h5>
-                            <p>Nossa empresa é como uma grande família, e cada departamento tem seu papel especial! 👨‍👩‍👧‍👦</p>
-                            <div class="department-card">
-                                <h6><i class="bi bi-people"></i> Recursos Humanos</h6>
-                                <p>Nossa equipe de RH cuida de todos nós com muito carinho! Eles são responsáveis pela gestão de pessoas, recrutamento, treinamentos e desenvolvimento profissional. 💼</p>
+                            <p>Quer entender melhor como cada parte da empresa trabalha em conjunto? Dá uma olhada na estrutura dos nossos departamentos.</p>
+                            <div class="row g-3">
+                                <div class="col-12 col-md-6">
+                                    <div class="p-3 bg-white rounded h-100 shadow-sm" style="border-left: 4px solid #F59E0B;"> <!-- amber -->
+                                        <h6 class="mb-1 text-uppercase"><i class="bi bi-briefcase me-2 text-warning"></i>Diretoria Executiva</h6>
+                                        <div class="text-muted small mb-2">Liderar estrategicamente a Change Life Academy</div>
+                                        <ul class="mb-0">
+                                            <li>Diretor(a)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="p-3 bg-white rounded h-100 shadow-sm" style="border-left: 4px solid #10B981;"> <!-- emerald -->
+                                        <h6 class="mb-1 text-uppercase"><i class="bi bi-cash-coin me-2 text-success"></i>Planejamento Financeiro</h6>
+                                        <div class="text-muted small mb-2">Gerenciar os recursos financeiros da academia</div>
+                                        <ul class="mb-0">
+                                            <li>Gerente Financeiro(a)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="p-3 bg-white rounded h-100 shadow-sm" style="border-left: 4px solid #3B82F6;"> <!-- blue -->
+                                        <h6 class="mb-1 text-uppercase"><i class="bi bi-gear me-2 text-primary"></i>Gestão e Operações</h6>
+                                        <div class="text-muted small mb-2">Assegurar o funcionamento eficiente das operações</div>
+                                        <ul class="mb-0">
+                                            <li>Gerente Operacional</li>
+                                            <li>Gestão de Pessoas</li>
+                                            <li>Preparador(a) física(a)</li>
+                                            <li>Recepcionista</li>
+                                            <li>Estagiário(a) de Educação Física</li>
+                                        </ul>
                             </div>
-                            <div class="department-card">
-                                <h6><i class="bi bi-cash-coin"></i> Financeiro</h6>
-                                <p>Eles mantêm tudo organizado financeiramente! Gestão financeira, controle de custos, faturamento e planejamento orçamentário. 💰</p>
                             </div>
-                            <div class="department-card">
-                                <h6><i class="bi bi-person-badge"></i> Operações</h6>
-                                <p>O coração da nossa academia! Coordenação das atividades diárias, gestão de instrutores e supervisão das aulas. 🏃‍♀️</p>
+                                <div class="col-12 col-md-6">
+                                    <div class="p-3 bg-white rounded h-100 shadow-sm" style="border-left: 4px solid #06B6D4;"> <!-- cyan -->
+                                        <h6 class="mb-1 text-uppercase"><i class="bi bi-cpu me-2 text-info"></i>Transformação Digital</h6>
+                                        <div class="text-muted small mb-2">Planejar estratégias Digitais</div>
+                                        <ul class="mb-0">
+                                            <li>Analista de marketing</li>
+                                            <li>Analista de Sistemas</li>
+                                            <li>Estagiário(a) de T.I</li>
+                                        </ul>
                             </div>
-                            <div class="department-card">
-                                <h6><i class="bi bi-megaphone"></i> Marketing</h6>
-                                <p>Nossa equipe criativa! Comunicação, divulgação, eventos e relacionamento com clientes. Eles fazem a nossa voz ser ouvida! 📢</p>
                             </div>
-                            <div class="department-card">
-                                <h6><i class="bi bi-gear"></i> Manutenção</h6>
-                                <p>Nossos heróis da limpeza! Manutenção de equipamentos, limpeza e conservação das instalações. Tudo sempre impecável! 🧹</p>
                             </div>
                         </div>
                     </div>
@@ -238,10 +264,10 @@ function typeMessage(topic) {
                                 <li>Desafio interno de metas fitness com premiações</li>
                                 <li>Aulas e workshops exclusivos com treinadores da academia</li>
                                 <li>Vale-transporte</li>
-                                <li>Vale-refeição ou vale-alimentação (cartão flexível é uma tendência)</li>
+                                <li>Vale-refeição ou vale - alimentação (cartão flexível é uma tendência)</li>
                                 <li>Plano de saúde (com coparticipação ou integral)</li>
                                 <li>Plano odontológico</li>
-                                <li>Auxílio-creche (para pais e mães colaboradores)</li>
+                                <li>Auxílio - creche (para pais e mães colaboradores)</li>
                                 <li>Subsídio para cursos externos e certificações na área fitness</li>
                                 <li>Plano de carreira estruturado</li>
                             </ul>
@@ -258,39 +284,33 @@ function typeMessage(topic) {
                         
                         <div class="message-text">
                             <h5><i class="bi bi-diagram-2"></i> Estrutura Hierárquica</h5>
-                            <p>Nossa estrutura é bem organizada, mas sempre com muito respeito e carinho entre todos! 🤗</p>
-                            <div class="hierarchy-tree">
-                                <div class="hierarchy-level ceo">
-                                    <i class="bi bi-crown"></i>
-                                    <span>Diretoria 👑</span>
+                            <p>Pra visualizar melhor como trabalhamos juntos, aqui está uma visão da estrutura das nossas áreas.</p>
+                            <div class="text-center mt-3">
+                                <img src="{{ url_for('static', filename='image/orgonograma.jpg') }}" alt="Organograma - Estrutura das Áreas" class="img-fluid rounded shadow-sm">
                                 </div>
-                                <div class="hierarchy-level management">
-                                    <i class="bi bi-person-badge"></i>
-                                    <span>Gerentes de Departamento 👨‍💼</span>
                                 </div>
-                                <div class="hierarchy-level supervisors">
-                                    <i class="bi bi-people"></i>
-                                    <span>Supervisores 👥</span>
                                 </div>
-                                <div class="hierarchy-level coordinators">
-                                    <i class="bi bi-person-check"></i>
-                                    <span>Coordenadores 👨‍💻</span>
                                 </div>
-                                <div class="hierarchy-level staff">
-                                    <i class="bi bi-person"></i>
-                                    <span>Colaboradores 👨‍💼</span>
+            `;
+            break;
+        
+        case 'feedbacks':
+            content = `
+                <div class="message bot-message">
+                    <div class="message-content">
+                        
+                        <div class="message-text">
+                            <h5><i class="bi bi-chat-dots"></i> Feedbacks</h5>
+                            <p>🎥 Confira o feedback de alguns de nossos colaboradores.<br>
+                            Eles compartilham como tem sido fazer parte dessa jornada de crescimento, propósito e transformação.<br>
+                            ✨ Inspire-se com essas histórias e veja o impacto de viver a cultura Change Life Academy de perto.</p>
+                            <div class="ratio ratio-16x9 mt-3 video-holder position-relative">
+                                <div class="video-spinner d-flex align-items-center justify-content-center position-absolute top-0 start-0 w-100 h-100" style="background:#000;border-radius:0.5rem;">
+                                    <div class="spinner-border text-light" role="status" aria-label="Carregando vídeo" style="width:2.25rem;height:2.25rem;"></div>
                                 </div>
-                            </div>
-                            <div class="hierarchy-info">
-                                <h6>Princípios da Nossa Estrutura:</h6>
-                                <p>O que mais me orgulha é como nossa empresa funciona:</p>
-                                <ul>
-                                    <li><strong>Horizontalidade:</strong> Comunicação direta entre todos os níveis - todos podem falar com todos! 💬</li>
-                                    <li><strong>Transparência:</strong> Decisões compartilhadas e abertas - nada de segredos! 🔍</li>
-                                    <li><strong>Desenvolvimento:</strong> Oportunidades de crescimento para todos - crescemos juntos! 🌱</li>
-                                    <li><strong>Mentoria:</strong> Líderes como mentores de suas equipes - aprendemos uns com os outros! 🎓</li>
-                                </ul>
-                                <p>É uma estrutura que funciona com muito amor e respeito! ❤️</p>
+                                <video controls preload="metadata" poster="{{ url_for('static', filename='image/logo.png') }}">
+                                    <source src="{{ url_for('static', filename='video/Feedbacks.mp4') }}" type="video/mp4">
+                                </video>
                             </div>
                         </div>
                     </div>
@@ -307,6 +327,25 @@ function typeMessage(topic) {
     
     // Type the content with effect
     typeWriter(messageDiv.querySelector('.message-text'), content);
+
+    // Ativa spinner até o vídeo estar pronto (quem-somos / feedbacks)
+    const holders = messageDiv.querySelectorAll('.video-holder');
+    holders.forEach(holder => {
+        const spinner = holder.querySelector('.video-spinner');
+        const video = holder.querySelector('video');
+        if (!video || !spinner) return;
+
+        // Mostrar o player imediatamente (sem aguardar eventos), mas manter spinner por 300ms
+        video.style.opacity = '1';
+        setTimeout(() => {
+            spinner.style.display = 'none';
+        }, 300);
+
+        // Caso o navegador demore, garantimos esconder o spinner quando puder tocar
+        const hideOnReady = () => { spinner.style.display = 'none'; };
+        video.addEventListener('canplay', hideOnReady, { once: true });
+        video.addEventListener('loadedmetadata', hideOnReady, { once: true });
+    });
 }
 
 function typeWriter(element, fullContent) {
@@ -319,15 +358,16 @@ function typeWriter(element, fullContent) {
     
     let i = 0;
     let currentText = '';
+    const step = fullText.length > 800 ? 2 : 1; // escrever 1-2 chars por ciclo
     
     function typeChar() {
         if (i < fullText.length) {
-            currentText += fullText.charAt(i);
+            currentText += fullText.slice(i, i + step);
             element.innerHTML = currentText;
-            i++;
+            i += step;
             
-            // Variable typing speed for more natural feel
-            const delay = Math.random() * 20 + 10; // 10-30ms
+            // Levemente mais lento, mantendo variação natural
+            const delay = Math.random() * 12 + 12; // 12-24ms
             setTimeout(typeChar, delay);
         } else {
             // After typing is complete, show the formatted content

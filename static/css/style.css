@@ -506,7 +506,7 @@ body {
 }
 
 .message-text h6 {
-    color: var(--gym-accent);
+    /*color: var(--gym-accent);*/
     margin: 1rem 0 0.5rem 0;
     font-weight: 600;
 }
